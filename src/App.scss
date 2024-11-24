@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+@import "./settings.scss";
+
+body {
+  margin: 0;
+  font-size: 12pt;
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.views {
+  /* padding-top: .1px 라도 없으면, float left drawer가 .view 첫 자식 항목의 margin-top을 같이 먹음. 왜??? */
+  padding: 4em 0 0 5em;
+}
+
+h1, h2, h3 { margin: 0; margin-bottom: .5em; }
+
+input[type=text] {
+  font-size: 1rem; padding: .5em;
+  border: 1px solid #eee; outline: none;
+  box-shadow: .1em .1em .2em rgba(0,0,0,.3  );
+  border-radius: .2em;
+  &:focus { border: 1px solid gray;  }
+}
+
+input[type=checkbox] {
+  box-shadow: .1em .1em .2em rgba(0,0,0,.1);
+  appearance: none;
+  width: 1.1em; height: 1.1em;
+  border: 1px solid #aaa;
+  margin-bottom: -0.11em;
+
+  &:checked {
+    background: $primary-color;
+    border: 1px solid $primary-color;
+    box-shadow: .1em .1em .2em rgba(0,0,0,.25); }
+
+  &:checked::after {
+    display: block; position: relative; content: '';
+    border: solid white; border-width: 0 .2em .2em 0;
+    left: 30%; top: 8%; height: 50%; width: 20%;
+    transform: rotate(45deg); }
+}
+
+@mixin btn($bgcolor) {
+  $fg-color: white;
+  @if (lightness($bgcolor) >= 80) { $fg-color: black; }
+  transition: background-color .5s;
+  color: $fg-color; border: none; outline: none; font-weight: 400; font-size: 1rem;
+  min-width: 6em; padding: .4em 1em; border-radius: .4em;
+  background-color: $bgcolor; box-shadow: .15em .15em .3em rgba(168, 80, 80, 0.3);
+  &:hover { cursor: pointer; transform: scale(103%); }
+  &:active { transform: translateY(.1em); }
+  &:focus { border: 1px solid darken($bgcolor, 20%); }
+}
+
+button {
+  @include btn($button-color);
+  &.primary { @include btn($primary-color) }
+}

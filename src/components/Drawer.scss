@@ -1,0 +1,38 @@
+$width: 15em;
+$fg-color: white;
+$bg-color: #07f;
+$menu-hover-color: #06e;
+
+.drawer {
+  .max {
+    transition: margin .8s ease;
+    float: left; width: $width; height: 100vh;
+    background-color: $bg-color; color: white;
+    padding: 2em 1em; margin: 0; margin-right: 4em;
+    box-shadow: .2em .2em .4em rgba(0,0,0,.3);
+    &.hide { margin-left: calc(-1 * $width - 3em); }
+    .drawer-icon svg { font-size: 1.2em; margin: 0 0.5em -.2em 0; }
+  }
+  .mini {
+    transition: all 1s ease;
+    position: absolute; left: 5px; top: 10px;
+    display: block; margin: 0.4em 0 0 1em; text-align: center;
+    width: 2em; height: 2em; border-radius: 50%;
+    background-color: $bg-color; color: $fg-color;
+    box-shadow: .1em .1em .2em rgba(0,0,0,.2);
+    &:hover { box-shadow: .2em .2em .2em rgba(0,0,0,.3); };
+    &.hide { opacity: 0; z-index: -1; }
+    .drawer-icon svg { font-size: 1.4em; margin-top: .2em; }
+  }
+  .drawer-icon:hover { cursor: pointer; }
+  .title { font-size: 14pt; margin-left: .7em; }
+  .menu { margin-top: 1em; }
+  a { text-decoration: none; color: white; display: block; padding: .6em 2em;
+      transition: background-color .8s, box-shadow .8s; border-radius: .4em;
+      span { margin-right: .7em; }
+      &:hover, &:focus { background-color: $menu-hover-color; transform: scale(103%);
+                box-shadow: .2em .2em .4em rgba(0,0,0,.2); }
+      &:active { box-shadow: none; transform: translateY(.1em); }
+      &:focus { outline: none; } }
+
+}
